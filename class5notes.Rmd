@@ -1,0 +1,54 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r, message = FALSE}
+#gets rid of annoying chunk autooutput
+genderVar <- sample(x = c("M", "F", "Other"), size = 200,  replace = T)
+
+#we're sampling from the simple character vector named here, not calling anything
+
+
+levels(fctGender) <- c("Other", "F", "M")
+#this just renames the columns
+
+fctGenderFinal <- factor(genderVar, labels = c("Other", "F", "M"), levels = c("Other", "Female", "Male"))
+#here, levels reorders the columns and all assoc data
+
+#get message = FALSE INFO
+
+#facet_wrap(~origin)
+#tilde is an operator along the lines of "is operating on" it associates variables with a function here
+#you're telling it what to group by, facet is like a group. you need a categorical example to have this be useful.
+
+#ggplot argument fill = month, argument in ggplot color change according to a unique param ("month")
+#the first argument to geom_hisrogram is MAPPING, data is SECOND. reverse for ggplot itself.
+#Error Mapping must be created by aes is an argument order error
+#this only comes up with implicit assignments
+
+# HOW TO SUBMIT ASSIGNMENT
+Push
+#Use settings to HOST part of my repo, a particular folder or file
+#then you can make a URL out of the repo plus the html file name of your notebok
+#the link is the url of your repo plus the file path, terminating
+#in the notebook html file name
+
+```
+
+
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
