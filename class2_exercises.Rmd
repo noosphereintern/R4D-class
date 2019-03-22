@@ -57,8 +57,8 @@ vector with c() being the general form and everything inside being the arguments
 1. Install and load the `nycflights13` package (and the `tidyverse` package if you did not complete that to-do)
 
 ```{r}
-install.packages("tidyverse")
-install.packages("nycflights13")
+#install.packages("tidyverse")
+#install.packages("nycflights13")
 library(tidyverse); library(nycflights13)
 ```
 
@@ -91,6 +91,7 @@ flights %>%
 flights %>% 
   select(day, month, year, contains("delay"))
 #not sure how to do this with multiple pipes
+#first three arguments are column names
 ```
 
 

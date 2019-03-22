@@ -9,7 +9,7 @@ Semicolons are line separators
 R Markdown cheat sheet to understand chunk syntax
 use dot operator after a pipe to refer back to your piped data
 unique (data object subset) returns all unique values
-na.rm is good argument to ignore NA values - only needed for base r commands not tidyverse?
+na.rm (remove nas) is good argument to ignore NA values - only needed for base r commands not tidyverse?
 slice filters by row number, which is relative to prior operations
 tough stuff about rank functions, generally they return value representing the ranked order of each row for a given column
 

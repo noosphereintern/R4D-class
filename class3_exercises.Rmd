@@ -1,13 +1,15 @@
 ---
 title: "Class 3 - In class exercises"
-author: Hari Subhash
-date: "Date created: `r Sys.Date()`"
+author: "Hari Subhash"
+date: 'Date created: `r Sys.Date()`'
 output:
   html_notebook:
+    code_folding: show
+    df_print: paged
     highlight: kate
     smart: yes
     theme: cosmo
-    code_folding: show
+  html_document:
     df_print: paged
 ---
 **INSTRUCTIONS**:
@@ -54,8 +56,8 @@ flights %>%
 3. Run the code below, read the error and fix the code so that it works
 ```{r}
 flights %>% 
-    filter(month = 6 & day > 15)
-  #needs a ==
+    filter(month == 6 & day > 15)
+  #needs a ==, had an =
   #we're not setting a param value here, it's an evaluation criteria
 
 
@@ -80,6 +82,7 @@ flights %>%
 
 
 2. Use `transmute()` instead of `mutate()` to do the same. What is the difference between the two?
+Answer: it appears that this 
 ```{r}
 flights %>% 
   transmute(takeoff = if_else(dep_time < 1200, "Flight is AM", "Flight is PM"))
