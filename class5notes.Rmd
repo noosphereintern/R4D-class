@@ -34,6 +34,7 @@ Push
 #then you can make a URL out of the repo plus the html file name of your notebok
 #the link is the url of your repo plus the file path, terminating
 #in the notebook html file name
+#video segment at 917PM or so of today's thing
 
 ```
 
