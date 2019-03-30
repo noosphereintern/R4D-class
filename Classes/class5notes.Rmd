@@ -17,7 +17,7 @@ levels(fctGender) <- c("Other", "F", "M")
 fctGenderFinal <- factor(genderVar, labels = c("Other", "F", "M"), levels = c("Other", "Female", "Male"))
 #here, levels reorders the columns and all assoc data
 
-#get message = FALSE INFO
+#get in chunk setting, message = FALSE INFO
 
 #facet_wrap(~origin)
 #tilde is an operator along the lines of "is operating on" it associates variables with a function here
