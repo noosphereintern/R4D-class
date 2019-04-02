@@ -122,7 +122,7 @@ flights %>%
   geom_smooth(method = "lm")
 ```
 
-
+Hey, is one of these lines really linear and one not?
 
 
 ##Task Set 3: Make a pretty plot

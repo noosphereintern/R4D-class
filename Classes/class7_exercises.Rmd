@@ -28,12 +28,18 @@ output:
 1. The chunk below contains part of the code required to create a scatter plot. Complete it to create a scatter plot showing the relationship between population and gddPercap for latest year for every country
 
 ```{r}
+install.packages('gapminder')
+library(gapminder)
+gapminder %>%
+  names()
+
+library(tidyverse)
 gapminder %>% 
-    group_by(*) %>% 
+    group_by(country) %>% 
     filter(year == max(year, na.rm = T)) %>% 
     ungroup() %>% 
     ggplot(data = ., mapping = aes(x = pop, y = gdpPercap)) +
-    geom_*()
+    geom_point()
 ```
 
 2. The previous scatter looks weird because there are a few population values that are really big that elongate the x-axis while most of the variation in the data happens on the left-side of this axis. The same things is happening on the y-axis. We can compress this chart by taking logs. A Log transformation is useful to highlight underlying patterns in highly skewed data (long tails). Set the x aesthetic as `log(pop)` instead of `pop` and `log(gdpPercap)` instead of `gdpPercap` for the y-aesthetic. Like so `mapping = aes(x = log(pop), y = log(gdpPercap))`.
