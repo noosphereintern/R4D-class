@@ -29,7 +29,7 @@ output:
 **Task**: Explore at least 5 different causes for departure and arrival delays (combined - not 5 each). Its not necessary that you find a definitive answer for what causes a delay, instead I want you to showcase your ability to explore the data with a combination of analytical text, tables and charts. The final output should be something you can show a prospective employer or client as proof of you ability to work with data in R.
 
 
-```{r}
+```{r, results='hide', echo=FALSE}
 library(tidyverse)
 library(nycflights13)
 library(skimr)
@@ -37,7 +37,7 @@ library(skimr)
 skim(weather)
 ```
 
-```{r}
+```{r, results='hide', echo=FALSE}
 skim(flights)
 ```
 
