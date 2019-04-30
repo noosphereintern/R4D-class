@@ -1,0 +1,67 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+
+#notes.
+when adding column numeric vectors of different length, the smaller vector is repeated to re-add into the larger vector.
+it's not NA, and it's not decline to combine. X = c(1,2,3) + y = c(1:6) = 2,4,6,5,7,9
+
+for equivalence checks, you do the same cycle. For prior set, x == y returns T T T F F F 
+
+the sum command takes the literal sum of all numbers in the vector, and if you give it an x+y, it sums each number in both.
+
+For sum (x + 2), the scalar operation goes first, i.e 2 is added to each value in x before all is summed. answer is 12.
+
+for x %in% y, each value is checked individually.
+
+when you filter for a column of character vectors, it checks only one of the vectors for each row, if its'a 2 row vector, it will miss half the many-> matches.
+
+when you use filter X in y, you return a vector of size x, so when checking against a dataset, the big one you're checking inside should be x.
+**you will get this wrong**
+
+remember, when you summarize a grouped thing, output has one row per group. So don't use inside the sum to perform a numeric
+operation on a column that's already groups. it will create a vector with many more values than the grouped table. 
+The thing you're looking inside for matches can't be smaller than the key vector. This gives error : Column must be length 1,
+(a summary value). If you do a mean(operation), that reduces the thing to one value per grouped row.
+
+IMPORTANT: whenever you use a notebook, the WD is set to whatver folder the notebook is inside.
+
+Don't recommend using the Rstudio UI to import datasets, it hides errors
+
+in an r script you use: print(getwd) to see the current working directory.
+
+##CLASS 14
+
+Separate & Unite command: Convert  = T just allows R to apply conversion to the variable type instead of keeping it consistent.
+
+The key to understanding gather is that it turns two columns of values into one column, but then makes a replacement 2nd column 
+just marking which column each row came from.
+
+separate and unite commands require you to use argument sep "" to define a character telling it when to stop putting the 
+cell value into first col and start putting into 2nd, 3rd, 4th etc.
+
+when you try to refer to columns whose names are numeric characters, you need backticks '34343' '321', or you will get error
+
+Look at "R for data science" book is free online and very helpful!
+
+
+
+
+

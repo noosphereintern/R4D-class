@@ -29,7 +29,7 @@ flights %>%
               stdDevDelay = sd(dep_delay, na.rm = T))
 ```
 
-
+Note what the paste command does in chunk below.
 ```{r}
 ##this code fails silently. Correct it so that the newDate column shows the actual date
 flights %>% 

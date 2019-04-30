@@ -10,7 +10,7 @@ output:
     code_folding: show
     df_print: paged
 ---
-#notes
+#notes CLASS 10 AND 11
 
 when need to see number of obs in a group
 
@@ -24,6 +24,19 @@ time_hour does better, hour creates daylight_savings duplicates
 
 NOTE - in weathered_flights in lecture, the first plot we get looks weird and maybe sample size is the problem
 
+TIDYVERSE lets you skip quotes around column names. This is "Quasi-quotation"
+for selecting in base r, describe the rows (value criteria) you want to select first, comma, then the columns
+
+
+when you do a left join with an x and a y when the primary key column/s are not unique in terms of row, it creates new rows that are
+all combinations of each nonuniquerow on each side of the join. If a key value shows up 2 times in each table, you'll have four rows for that in the new table. If 3 in each side, 9 ultimate rows.
+
+
+NOTE IN Lecture Hari shows us how to keep outliers by changing the data values such that gusts over 40 are reset to 40. We see that this 
+strengths the positive correlation we find because the increase occurs over a smaller x-axis space. Thus Hari doesn't like doing this.
+He wants to drop the outlier observations. Wind-gust + dep delay.
+
+Not facet wrapping for origins leads to in your scatterplot multiple y values per x value
 
 ##Task 1: Examine the weather data
 1. Use the `skim()` function from the `skimr` package to visually display all the variables in weather
@@ -105,7 +118,8 @@ summary(weather$wind_gust)
 ggplot(data = weather, aes(wind_gust)) +
   geom_density()
 ```
-
+Next we sort wind_gist into bins for another way to summarize it.
+see the nObs = n trick to count observations
 ```{r}
 weather %>% 
   filter(wind_gust > 0) %>%
@@ -119,4 +133,38 @@ weather %>%
 ##Task 3. Explore a relationship
 Explore the relationship between departure delay and a variable of your choice.
 
+##Task 4: Explore
+Explore a multivariate relationship between dep_delay and a combo of vars.
+I think the point here is we just take the key and the variable of interest from flights.
+
+```{r}
+library(nycflights13) 
+library(tidyverse)
+
+WFlll <- flights %>% 
+  select(origin, time_hour, dep_delay) %>%
+  left_join(x = .,
+            y = weather,
+            by = c("origin", "time_hour"))
+
+WFlll %>% 
+  str()
+
+
+WFlll %>%  
+  mutate(grpdewp = cut_width(dewp, 10), presgrwp = cut_width(pressure, 8)) %>% 
+  group_by(grpdewp, presgrwp) %>% 
+  summarise (nObs = n(), meandelay = mean(dep_delay, na.rm = T)) %>% 
+   ggplot(aes(x = grpdewp, y = meandelay)) +
+  geom_point() +
+  facet_wrap(~ presgrwp)
+
+
+
+  
+weather %>% 
+  ggplot(aes(x = pressure)) +
+  geom_histogram()
+           
+```
 
