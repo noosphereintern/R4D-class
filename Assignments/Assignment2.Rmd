@@ -162,6 +162,56 @@ Let's look at precip.
 Preciptest 
 ```
 
+```{r}
+Preciptest %>% 
+  group_by(precip, origin) %>% 
+  summarise(meandepdelayQ201 = mean(dep_delay, na.rm = T)) %>% 
+  arrange(meandepdelayQ201) %>% 
+  ggplot(aes(meandepdelayQ201, y = precip)) +
+  geom_point() +
+  geom_smooth(method = lm)
+
+```
+
+Looks like a bingo.
+Let's wrap it by origin.
+```{r}
+Preciptest %>% 
+  group_by(precip, origin) %>% 
+  summarise(meandepdelayQ201 = mean(dep_delay, na.rm = T)) %>% 
+  arrange(meandepdelayQ201) %>% 
+  ggplot(aes(meandepdelayQ201, y = precip)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  facet_wrap(~ origin)
+
+```
+
+What else can we facet wrap?
+
+```{r}
+Preciptest <- flights %>%
+  select(time_hour, carrier, origin, dep_delay) %>% 
+  left_join(
+    x = .,
+    y = weather,
+    by = c("origin", "time_hour"))
+
+Preciptest %>% 
+  group_by(precip, carrier) %>% 
+  summarise(meandepdelayQ201 = mean(dep_delay, na.rm = T)) %>% 
+  arrange(meandepdelayQ201) %>% 
+  ggplot(aes(meandepdelayQ201, y = precip)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  facet_wrap(~ carrier)
+
+```
+Interesting and a bit hard to parse, but the relationship certainly varies by carrier.
+
+```{r}
+geom_
+```
 
 
 SECTION THREEE
@@ -238,10 +288,26 @@ DataSet4 %>%
  
 DataSet4 %>% 
   group_by(visib) %>% 
-ggplot(aes(x = visib, y = arr_delay), na.rm = T ) +
+ggplot(aes(x = as.factor(visib), y = arr_delay), na.rm = T ) +
   geom_boxplot()
 ```
   
+ Okay, this kinda works! You could sort of read a trend into this, but it seems to decline around "1"
+ 
+```{r}
+ DataSet4 <- DataSet4 %>%
+  filter(visib > 0.11)
+
+DataSet4 %>% 
+  ggplot(aes(x = visib, y = arr_delay)) +
+  geom_point() +
+  geom_smooth(method = lm)
+```
+ 
+ A clearer relationship now, via cheating :-D
+ 
+
+ 
  
 
 
