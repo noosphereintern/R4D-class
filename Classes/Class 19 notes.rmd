@@ -1,0 +1,49 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+##notes
+
+So to remind with for loops. 
+
+for i in dataframe
+  print i
+  
+  will see and print the column
+  
+  for [[i]] in seq_along dataframe
+    print [[i]]] will also work
+    
+    but for i in seq_along dataframe
+    print i
+    
+    that will just print the column indices, not the column.
+    
+    Seq_along pulls indices - the number that describes the order of the column but [[]] counters that somehow
+    
+Map applies, in sequence, each element of the input data into a given function, one at a time
+
+use list.files and list.dir, rather than using the UI
+
+there's an excel_sheets function...
+
+the name.repair argument to map lets you name a function that will clean names of cols
+we're skipping rows to get the year columns and all below them (true data)
+
+when we mapped the data, we got a list with one sheet per element
+
